@@ -3,7 +3,8 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8")
-INTERPRETER_PATH = os.path.join(os.path.dirname(__file__), "..", "src", "interpreter.exe")
+INTERPRETER_PATH = os.path.join(os.path.dirname(__file__), "..", "cmake-build-debug", "untitled5.exe")
+
 
 
 def run_interpreter(input_data):
