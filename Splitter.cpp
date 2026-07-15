@@ -3,7 +3,7 @@
 
 Piece Splitter::readNumber(const std::string& line, size_t& pos) {
     size_t start = pos;
-    while (pos < line.size() && (std::isdigit((unsigned char)line[pos]) || line[pos] == '.')) {
+    while (pos < line.size() && (std::isdigit(line[pos]) || line[pos] == '.')) {
         pos++;
     }
     std::string text = line.substr(start, pos - start);
@@ -11,7 +11,7 @@ Piece Splitter::readNumber(const std::string& line, size_t& pos) {
 }
 Piece Splitter::readName(const std::string& line, size_t& pos) {
     size_t start = pos;
-    while (pos < line.size() && (std::isalnum((unsigned char)line[pos]) || line[pos] == '_')) {
+    while (pos < line.size() && (std::isalnum(line[pos]) || line[pos] == '_')) {
         pos++;
     }
     std::string text = line.substr(start, pos - start);
@@ -23,15 +23,15 @@ std::vector<Piece> Splitter::split(const std::string& line) {
     size_t pos = 0;
     while (pos < line.size()) {
         char c = line[pos];
-        if (std::isspace((unsigned char)c)) {
+        if (std::isspace(c)) {
             pos++;
             continue;
         }
-        if (std::isdigit((unsigned char)c)) {
+        if (std::isdigit(c)) {
             pieces.push_back(readNumber(line, pos));
             continue;
         }
-        if (std::isalpha((unsigned char)c)) {
+        if (std::isalpha(c)) {
             pieces.push_back(readName(line, pos));
             continue;
         }

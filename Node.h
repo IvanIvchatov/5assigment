@@ -28,7 +28,7 @@ public:
 class VariableNode : public Node {
 public:
     std::string name;
-    VariableNode(std::string name) : name(std::move(name)) {}
+    VariableNode(std::string name) : name(name) {}
     double calculate(Memory& memory) override {
         return memory.get(name);
     }
@@ -39,7 +39,7 @@ public:
     char op;
     NodePtr left, right;
     OperationNode(char op, NodePtr left, NodePtr right)
-        : op(op), left(std::move(left)), right(std::move(right)) {}
+        : op(op), left(left), right(right) {}
 
     double calculate(Memory& memory) override {
         double l = left->calculate(memory);
@@ -59,7 +59,7 @@ public:
     std::string name;
     std::vector<NodePtr> arguments;
     FunctionCallNode(std::string name, std::vector<NodePtr> arguments)
-        : name(std::move(name)), arguments(std::move(arguments)) {}
+        : name(name), arguments(arguments) {}
 
     double calculate(Memory& memory) override {
         std::vector<double> values;

@@ -14,10 +14,11 @@ public:
     }
 
     void add(const std::string& name, double value) {
-        auto result = values.emplace(name, value);
-        if (!result.second) {
+        if (values.count(name) > 0) {
             std::cout << "Error: variable '" << name << "' already defined" << std::endl;
+            return;
         }
+        values[name] = value;
     }
 };
 

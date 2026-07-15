@@ -1,5 +1,5 @@
 #include "TreeBuilder.h"
-#include <cstdlib>
+#include <string>
 
 NodePtr TreeBuilder::buildExpression() {
     NodePtr left = buildTerm();
@@ -31,7 +31,7 @@ NodePtr TreeBuilder::buildFactor() {
 
     if (piece.type == PieceType::NUMBER) {
         advance();
-        return std::make_shared<NumberNode>(std::atof(piece.text.c_str()));
+        return std::make_shared<NumberNode>(std::stod(piece.text));
     }
 
     if (piece.type == PieceType::OPEN_PAREN) {
